@@ -26,7 +26,7 @@ def train_val_generators(train_dir, validation_dir):
     train_generator = train_datagen.flow_from_directory(train_dir,
                                                         batch_size=32,
                                                         class_mode='categorical',
-                                                        target_size=(223, 223))
+                                                        target_size=(225, 225))
 
     validation_datagen = ImageDataGenerator(
         rescale=1. / 255,
@@ -42,13 +42,13 @@ def train_val_generators(train_dir, validation_dir):
     validation_generator = validation_datagen.flow_from_directory(validation_dir,
                                                                   batch_size=32,
                                                                   class_mode='categorical',
-                                                                  target_size=(223, 223))
+                                                                  target_size=(225, 225))
 
     return train_generator, validation_generator
 
 
 def create_model():
-    pre_trained_model = InceptionV3(input_shape=(223, 223, 3),
+    pre_trained_model = InceptionV3(input_shape=(225, 225, 3),
                                     include_top=False,
                                     weights='imagenet')
     x = pre_trained_model.output
@@ -90,6 +90,6 @@ if __name__ == '__main__':
     VALIDATION_DIR = 'valid\\'
     train_generator, validation_generator = train_val_generators(TRAINING_DIR, VALIDATION_DIR)
     model = create_model()
-    history = model.fit(train_generator, epochs=5, validation_data=validation_generator)
+    history = model.fit(train_generator, epochs=25, validation_data=validation_generator)
     model.save('saved\\')
     display_metrics(history)
