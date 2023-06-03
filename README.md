@@ -8,6 +8,6 @@ The code was trained with three saved models.
 2. The second model is trained leaving out the target classification group so a delta in confidence scores can be derived. 
 3. The third model experiments with the TensorFlow differential privacy module to see it's impact on accuracy and a malicious actors ability to conduct membership infrerence attacks. 
 
-**Please see my youtube channel for a complete overview of the project and how to work with the code. **
+***Please see my youtube channel for a complete overview of the project and how to work with the code. ***
 
 
